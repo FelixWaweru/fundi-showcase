@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Valentine's Day Card</title>
+    <style>
+        .button {
+            font-size: 24px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: pink;
+            color: white;
+            transition: background-color 0.5s;
+        }
+
+        .button:hover {
+            background-color: red;
+        }
+
+        .button.active {
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+    <script>
+        function changeButton() {
+            var button = document.getElementById("myButton");
+            button.classList.add("active");
+            button.innerHTML = "&#x1F493";
+        }
+    </script>
+</head>
+
+<body>
+    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <button id="myButton" class="button" onclick="changeButton()">Click Me!</button>
+    </div>
+</body>
+
+</html>

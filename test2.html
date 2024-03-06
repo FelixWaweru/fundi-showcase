@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Tiktok</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            position: relative;
+            height: 100vh;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        #header {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        #colorButton {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="header">Hello Tiktok</h1>
+    <button id="colorButton" onclick="changeGradient()">Change Color</button>
+    <script>
+        function changeGradient() {
+            const colors = ['#ee7752', '#e73c7e', '#23a6d5', '#23d5ab'];
+            const randomColor = Math.floor(Math.random() * colors.length);
+            document.body.style.background = `linear-gradient(45deg, ${colors[randomColor]}, ${colors[(randomColor + 1) % colors.length]}, ${colors[(randomColor + 2) % colors.length]}, ${colors[(randomColor + 3) % colors.length]})`;
+        }
+    </script>
+</body>
+
+</html>
