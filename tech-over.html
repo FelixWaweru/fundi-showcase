@@ -1,6 +1,24 @@
-Generate the html code for a website
-Make the site look nice with a gradient background and use the NTV brand colours
-At the top, add a title in all caps with 'Tech Over'
-Also embed the following video link in the center of the page 'https://youtu.be/psH5n_L8_x8?si=qQc_A9patQKc2ECH'
-Include a modern email form just below the video
-Add the following image as a small icon at the top of the page 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSccUM9b78N9CGk_wsCdits6y_y8i2nIXXuJC7V_Zw3w&s'
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title
+        style="text-align: center; font-size: 40px; color: white; background: linear-gradient(135deg, #007bff, #00b3e6); padding: 10px;">
+        TECH OVER</title>
+</head>
+
+<body style="background: linear-gradient(135deg, #007bff, #00b3e6); text-align: center; color: white;">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSccUM9b78N9CGk_wsCdits6y_y8i2nIXXuJC7V_Zw3w&s"
+        style="width: 50px; height: 50px; margin-top: 20px;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/psH5n_L8_x8" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+        style="margin-top: 50px;"></iframe>
+    <form style="margin-top: 50px;">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" style="padding: 5px;">
+        <button type="submit"
+            style="padding: 5px 10px; background: #007bff; color: white; border: none; margin-left: 10px;">Subscribe</button>
+    </form>
+</body>
+
+</html>
