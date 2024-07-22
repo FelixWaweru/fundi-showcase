@@ -1,0 +1,115 @@
+<!-- generate a html webpage and the js logic for a pong game
+make the pong controllable using the direction keys
+also make the background beautiful using material colours and gradients
+make the ball bounce off the edges and make the second pong respond to the ball position
+make the paddles and ball white and the game container outlined -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom right, #00bcd4, #3f51b5);
+        }
+
+        #game-container {
+            width: 600px;
+            height: 400px;
+            border: 2px solid white;
+            position: relative;
+        }
+
+        .paddle {
+            position: absolute;
+            width: 10px;
+            height: 100px;
+            background-color: white;
+        }
+
+        #player1 {
+            left: 0;
+        }
+
+        #player2 {
+            right: 0;
+        }
+
+        #ball {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="game-container">
+        <div id="player1" class="paddle"></div>
+        <div id="player2" class="paddle"></div>
+        <div id="ball"></div>
+    </div>
+    <script>
+        const player1 = document.getElementById('player1');
+        const player2 = document.getElementById('player2');
+        const ball = document.getElementById('ball');
+        let ballX = 300, ballY = 200, ballSpeedX = 2, ballSpeedY = 2;
+        let player1Y = 150, player2Y = 150;
+        const update = () => {
+            ballX += ballSpeedX;
+            ballY += ballSpeedY;
+            if (ballY >= 390 || ballY <= 0) {
+                ballSpeedY = -ballSpeedY;
+            }
+            if (ballX >= 590) {
+                if (ballY >= player2Y && ballY <= player2Y + 100) {
+                    ballSpeedX = -ballSpeedX;
+                } else {
+                    // Player 1 scores
+                    resetGame();
+                }
+            }
+            if (ballX <= 0) {
+                if (ballY >= player1Y && ballY <= player1Y + 100) {
+                    ballSpeedX = -ballSpeedX;
+                } else {
+                    // Player 2 scores
+                    resetGame();
+                }
+            }
+            player2Y = ballY - 50;
+            player2.style.top = player2Y + 'px';
+            ball.style.left = ballX + 'px';
+            ball.style.top = ballY + 'px';
+        };
+        const resetGame = () => {
+            ballX = 300;
+            ballY = 200;
+            ballSpeedX = Math.random() > 0.5 ? 2 : -2;
+            ballSpeedY = Math.random() > 0.5 ? 2 : -2;
+            player1Y = 150;
+            player2Y = 150;
+        };
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowUp' && player1Y > 0) {
+                player1Y -= 10;
+            }
+            if (event.key === 'ArrowDown' && player1Y < 300) {
+                player1Y += 10;
+            }
+            player1.style.top = player1Y + 'px';
+        });
+        setInterval(update, 1000 / 60);
+    </script>
+</body>
+
+</html>
